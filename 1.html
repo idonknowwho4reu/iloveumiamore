@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mi Amore</title>
+    <style>
+        /* --- IMPORT FONTS --- */
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Poppins:wght@600&display=swap');
+
+        /* --- RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF4500 100%);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* --- CANVAS --- */
+        #emojiCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* --- MAIN CARD --- */
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            padding: 35px 20px;
+            text-align: center;
+            animation: cardPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes cardPop {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- ANIMATED TEXT STYLES --- */
+
+        /* Happy Birthday - Bounce & Glow */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 5px;
+            animation: bounceIn 1s ease-out, glowRainbow 3s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glowRainbow {
+            0% { 
+                text-shadow: 0 0 20px #ff0000, 2px 2px 4px rgba(0,0,0,0.3);
+                color: #ffcccc;
+            }
+            25% { 
+                text-shadow: 0 0 20px #ff9900, 2px 2px 4px rgba(0,0,0,0.3);
+                color: #fff;
+            }
+            50% { 
+                text-shadow: 0 0 20px #ffff00, 2px 2px 4px rgba(0,0,0,0.3);
+                color: #fff;
+            }
+            75% { 
+                text-shadow: 0 0 20px #00ff00, 2px 2px 4px rgba(0,0,0,0.3);
+                color: #fff;
+            }
+            100% { 
+                text-shadow: 0 0 20px #ff0000, 2px 2px 4px rgba(0,0,0,0.3);
+                color: #ffcccc;
+            }
+        }
+
+        /* Mi Amore - Wiggle & Shake */
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+            animation: wiggle 0.5s ease-in-out 1s backwards, shake 2s ease-in-out infinite 2s;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes wiggle {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        /* Age Circle - Pop & Pulse */
+        .age-circle {
+            display: inline-block;
+            background: linear-gradient(135deg, #fff 0%, #ffebee 100%);
+            color: #DC143C;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 15px 0 20px 0;
+            border: 3px solid #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: popPulse 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s backwards;
+        }
+
+        @keyframes popPulse {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .age-circle {
+            animation: popPulse 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s backwards,
+                       pulse 2s ease-in-out infinite 1.4s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+        }
+
+        /* Message - Fade Slide */
+        p.message {
+            color: #fff;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            padding: 0 10px;
+            margin-bottom: 20px;
+            animation: fadeSlideUp 1s ease-out 1s backwards;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeSlideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Button - Slide In & Bounce */
+        .btn {
+            padding: 12px 35px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 50px;
+            color: #8B0000;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            animation: fadeSlideUp 0.8s ease-out 1.2s backwards, bounce 1s ease-in-out infinite 2s;
+            transition: transform 0.2s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .btn:hover {
+            transform: scale(1.1) !important;
+        }
+
+        /* Floating hearts decoration */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            animation: floatHeart 3s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="emojiCanvas"></canvas>
+
+    <!-- Floating Hearts -->
+    <div class="heart" style="top: 10%; left: 10%; animation-delay: 0s;">💕</div>
+    <div class="heart" style="top: 20%; right: 15%; animation-delay: 0.5s;">💖</div>
+    <div class="heart" style="bottom: 15%; left: 20%; animation-delay: 1s;">💝</div>
+    <div class="heart" style="bottom: 25%; right: 10%; animation-delay: 1.5s;">💘</div>
+
+    <div class="card">
+        <h1>Happy Birthday</h1>
+        <h2>Mi Amore 💕</h2>
+        
+        <div class="age-circle">17</div>
+        
+        <p class="message">
+            Today you turn 17, and the world shines brighter because you're in it. 
+            <br><br>
+            May your day be filled with endless joy, love, and all your heart's desires. 
+            <br>
+            You are my everything! 💖
+        </p>
+
+        <button class="btn" onclick="celebrate()">Make a Wish! 🎂</button>
+    </div>
+
+    <script>
+        // Canvas setup
+        const canvas = document.getElementById('emojiCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        const emojis = ['💕', '💖', '💝', '💘', '💗', '💓'];
+        
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Emoji Particle
+        class EmojiParticle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = -50;
+                this.size = Math.random() * 25 + 18;
+                this.speed = Math.random() * 2 + 2;
+                this.emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.03;
+                this.opacity = 1;
+                this.wobble = Math.random() * Math.PI * 2;
+            }
+            
+            update() {
+                this.y += this.speed;
+                this.wobble += 0.05;
+                this.x += Math.sin(this.wobble) * 0.5;
+                this.rotation += this.rotationSpeed;
+                
+                if (this.y > height - 100) {
+                    this.opacity -= 0.015;
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.font = `${this.size}px Arial`;
+                ctx.globalAlpha = Math.max(0, this.opacity);
+                ctx.textAlign = 'center';
+                ctx.fillText(this.emoji, 0, 0);
+                ctx.restore();
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].draw();
+                
+                if (particles[i].y > height + 50 || particles[i].opacity <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        // Add emojis
+        setInterval(() => {
+            if (particles.length < 40) {
+                particles.push(new EmojiParticle());
+            }
+        }, 250);
+
+        // Celebrate function
+        function celebrate() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => particles.push(new EmojiParticle()), i * 50);
+            }
+            
+            const btn = document.querySelector('.btn');
+            btn.innerText = "Wish Granted! ✨";
+            btn.style.background = "#fff";
+            
+            setTimeout(() => {
+                btn.innerText = "Make a Wish! 🎂";
+                btn.style.background = "linear-gradient(45deg, #FFD700, #FFA500)";
+            }, 2000);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
